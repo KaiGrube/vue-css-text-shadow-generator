@@ -23,7 +23,7 @@
               background-color:rgb(226, 226, 226);
             }
           
-            .label {
+            .box-label {
               width: 10em;
             }
           
@@ -45,56 +45,71 @@
               font-size: 1.7em;
               font-family: monospace;
             }
+
+            footer {
+                padding-left: 0.5em;
+                font-size: 0.7em;
+                font-style: italic;
+                background-color: white;
+            }
           </style>
     </head>
     
     <body>
         <div id="generatorApp">
             <div>                 
-                <div class="range-container box">
-                <label for="horizontal-length" class="label">Horizontal Length</label>
-                <input id="horizontal-length" type="range" min="0" max="50" v-model="offsetX">
-                <div class="range-value">
-                    {{offsetX}}px
-                </div>
-                </div>
-        
-                <div class="range-container box">
-                <label for="vertical-length" class="label">Verical Length</label>
-                <input id="vertical-length" type="range" min="0" max="50" v-model="offsetY">
-                <div class="range-value">
-                    {{offsetY}}px
-                </div>
+                <div class="box">
+                    <label for="horizontal-length" class="box-label">Horizontal Length</label>
+                    <input id="horizontal-length" type="range" min="0" max="50" v-model="offsetX">
+                    <div class="range-value">
+                        {{offsetX}}px
+                    </div>
                 </div>
         
-                <div class="range-container box">
-                <label for="blur-radius" class="label">Blur Radius</label>
-                <input id="blur-radius" type="range" min="0" max="50" v-model="blurRadius">
-                <div class="range-value">
-                    {{blurRadius}}px
-                </div>
-                </div>
-        
-                <div class="text-container box">
-                <label for="text" class="label">Preview Text</label>
-                <input id="text" type="text" min="0" max="50" v-model="text">
+                <div class="box">
+                    <label for="vertical-length" class="box-label">Verical Length</label>
+                    <input id="vertical-length" type="range" min="0" max="50" v-model="offsetY">
+                    <div class="range-value">
+                        {{offsetY}}px
+                    </div>
                 </div>
         
-                <div class="text-container box">
-                <label for="color" class="label">Shadow Color</label>
-                <input id="color" type="color" v-model="color">
+                <div class="box">
+                    <label for="blur-radius" class="box-label">Blur Radius</label>
+                    <input id="blur-radius" type="range" min="0" max="50" v-model="blurRadius">
+                    <div class="range-value">
+                        {{blurRadius}}px
+                    </div>
+                </div>
+        
+                <div class="box">
+                    <label for="text" class="box-label">Preview Text</label>
+                    <input id="text" type="text" min="0" max="50" v-model="text">
+                </div>
+        
+                <div class="box">
+                    <label for="color" class="box-label">Shadow Color</label>
+                    <input id="color" type="color" v-model="color">
                 </div>
                         
                 <div class="preview box" :style="style">
-                    {{ text }}
+                    {{text}}
                 </div>
             
                 <div class="code box">
-                    {{ style }}
+                    {{style}}
                 </div>
             
               </div>
         </div>
+
+        <footer class="footer">
+            Source: 
+            <a href="https://github.com/KaiAtDCI/css-text-shadow-generatOr">
+                https://github.com/KaiAtDCI/css-text-shadow-generatOr
+            </a>
+        </footer>
+
     </body>
 
     <script>
