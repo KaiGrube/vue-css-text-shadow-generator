@@ -15,6 +15,7 @@
               align-items: center;
               padding: .5em;
               margin: 2px;
+              border-radius: .5rem;
               font-family: Verdana, Geneva, Tahoma, sans-serif;
               background-color: rgb(236, 236, 236);
             }
@@ -60,7 +61,7 @@
             <div>                 
                 <div class="box">
                     <label for="horizontal-length" class="box-label">Horizontal Length</label>
-                    <input id="horizontal-length" type="range" min="0" max="50" v-model="offsetX">
+                    <input id="horizontal-length" type="range" min="0" max="20" v-model="offsetX">
                     <div class="range-value">
                         {{offsetX}}px
                     </div>
@@ -68,7 +69,7 @@
         
                 <div class="box">
                     <label for="vertical-length" class="box-label">Verical Length</label>
-                    <input id="vertical-length" type="range" min="0" max="50" v-model="offsetY">
+                    <input id="vertical-length" type="range" min="0" max="20" v-model="offsetY">
                     <div class="range-value">
                         {{offsetY}}px
                     </div>
@@ -76,7 +77,7 @@
         
                 <div class="box">
                     <label for="blur-radius" class="box-label">Blur Radius</label>
-                    <input id="blur-radius" type="range" min="0" max="50" v-model="blurRadius">
+                    <input id="blur-radius" type="range" min="0" max="20" v-model="blurRadius">
                     <div class="range-value">
                         {{blurRadius}}px
                     </div>
@@ -116,9 +117,9 @@
         const generatorApp = {
             data() {
                 return {
-                    offsetX: 4,
-                    offsetY: 4,
-                    blurRadius: 4,
+                    offsetX: 3,
+                    offsetY: 3,
+                    blurRadius: 3,
                     color: 'black',
                     text: 'Lorem ipsum ...'
                 }
