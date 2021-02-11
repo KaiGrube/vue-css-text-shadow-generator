@@ -26,11 +26,12 @@
           
             .box-label {
               width: 10em;
+
             }
 
             label {
-                overflow: hidden;
-                white-space: nowrap;
+              overflow: hidden;
+							white-space: nowrap;
             }
           
             .range-value {
@@ -41,12 +42,15 @@
               flex-grow: 1;
             }
           
-            .preview {
+            #preview { 
+							flex-grow: 1;
+							padding: .25em;
+							background-color: white;
               text-align: left;
               font-size: 2em;
               font-family: 'Quicksand', sans-serif;
             }
-          
+
             .code {
               font-size: 1.7em;
               font-family: monospace;
@@ -96,11 +100,15 @@
                 <div class="box">
                     <label for="color" class="box-label">Shadow Color</label>
                     <input id="color" type="color" v-model="color">
-                </div>
-                        
-                <div class="preview box" :style="style">
+								</div>
+								
+								<div class="box">
+									<label for="preview" class="box-label">Preview</label>
+                  <div id="preview" :style="style">
                     {{text}}
-                </div>
+                  </div>
+								</div>
+											
             
                 <div class="code box">
                     {{style}}
