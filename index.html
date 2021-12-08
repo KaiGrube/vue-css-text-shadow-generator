@@ -1,156 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CSS Text Shadow GeneratOr</title>
-        <script src="https://unpkg.com/vue@next"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>CSS Text Shadow Generator</title>
+    <script src="https://unpkg.com/vue@next"></script>
 
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');  
-              
-            .box {
-              display: flex;
-              align-items: center;
-              padding: .5em;
-              margin: 2px;
-              border-radius: .5rem;
-              font-family: Verdana, Geneva, Tahoma, sans-serif;
-              background-color: rgb(236, 236, 236);
-            }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
-            .box:hover {
-              background-color:rgb(226, 226, 226);
-            }
-          
-            .box-label {
-              width: 10em;
+        .box {
+            display: flex;
+            align-items: center;
+            padding: 1em;
+            margin: 1em;
+            border-radius: 2em;
+            border: 1px solid darkgray;
+            font-family: Orbitron, sans-serif;
+            box-shadow: 1px 1px 3px #0b0e0b;
+        }
 
-            }
+        .box-label {
+            width: 10em;
+        }
 
-            label {
-              overflow: hidden;
-							white-space: nowrap;
-            }
-          
-            .range-value {
-              padding-left: 0.5em;
-            }
-          
-            input {
-              flex-grow: 1;
-            }
-          
-            #preview { 
-							flex-grow: 1;
-							padding: .25em;
-							background-color: white;
-              text-align: left;
-              font-size: 2em;
-              font-family: 'Quicksand', sans-serif;
-            }
+        input {
+            flex-grow: 1;
+        }
 
-            .code {
-              font-size: 1.7em;
-              font-family: monospace;
-            }
+        .preview {
+            flex-grow: 1;
+            padding: .25em;
+            text-align: left;
+            font-size: 2em;
+            font-family: 'Quicksand', sans-serif;
+        }
 
-            footer {
-                padding-left: 0.5em;
-                font-size: 0.7em;
-                font-style: italic;
-                background-color: white;
-            }
-          </style>
-    </head>
-    
-    <body>
-        <div id="generatorApp">
-            <div>                 
-                <div class="box">
-                    <label for="horizontal-length" class="box-label">Horizontal Length</label>
-                    <input id="horizontal-length" type="range" min="0" max="20" v-model="offsetX">
-                    <div class="range-value">
-                        {{offsetX}}px
-                    </div>
-                </div>
-        
-                <div class="box">
-                    <label for="vertical-length" class="box-label">Verical Length</label>
-                    <input id="vertical-length" type="range" min="0" max="20" v-model="offsetY">
-                    <div class="range-value">
-                        {{offsetY}}px
-                    </div>
-                </div>
-        
-                <div class="box">
-                    <label for="blur-radius" class="box-label">Blur Radius</label>
-                    <input id="blur-radius" type="range" min="0" max="20" v-model="blurRadius">
-                    <div class="range-value">
-                        {{blurRadius}}px
-                    </div>
-                </div>
-        
-                <div class="box">
-                    <label for="text" class="box-label">Preview Text</label>
-                    <input id="text" type="text" min="0" max="50" v-model="text">
-                </div>
-        
-                <div class="box">
-                    <label for="color" class="box-label">Shadow Color</label>
-                    <input id="color" type="color" v-model="color">
-								</div>
-								
-								<div class="box">
-									<label for="preview" class="box-label">Preview</label>
-                  <div id="preview" :style="style">
-                    {{text}}
-                  </div>
-								</div>
-											
-            
-                <div class="code box">
-                    {{style}}
-                </div>
-            
-              </div>
+        .code {
+            font-size: 1.75em;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="generatorApp">
+        <div class="box">
+            <label class="box-label" for="horizontal-length">Horizontal Length</label>
+            <input id="horizontal-length" max="20" min="0" type="range" v-model="offsetX">
+            <div class="range-value">
+                {{offsetX}}px
+            </div>
         </div>
 
-        <footer class="footer">
-            Source: 
-            <a href="https://github.com/KaiAtDCI/css-text-shadow-generatOr">
-                https://github.com/KaiAtDCI/css-text-shadow-generatOr
-            </a>
-        </footer>
+        <div class="box">
+            <label class="box-label" for="vertical-length">Verical Length</label>
+            <input id="vertical-length" max="20" min="0" type="range" v-model="offsetY">
+            <div class="range-value">
+                {{offsetY}}px
+            </div>
+        </div>
 
-    </body>
+        <div class="box">
+            <label class="box-label" for="blur-radius">Blur Radius</label>
+            <input id="blur-radius" max="20" min="0" type="range" v-model="blurRadius">
+            <div class="range-value">
+                {{blurRadius}}px
+            </div>
+        </div>
 
-    <script>
-        const generatorApp = {
-            data() {
-                return {
-                    offsetX: 3,
-                    offsetY: 3,
-                    blurRadius: 3,
-                    color: 'black',
-                    text: 'Lorem ipsum ...'
-                }
-            },
-            computed: {
-                style: function() {
-                return 'text-shadow: ' 
-                    + this.offsetX + 'px ' 
-                    + this.offsetY + 'px ' 
-                    + this.blurRadius 
-                    + 'px ' 
-                    + this.color 
-                    + ';';
-                }
-            }
-        }
-        Vue.createApp(generatorApp).mount('#generatorApp');
+        <div class="box">
+            <label class="box-label" for="text">Preview Text</label>
+            <input id="text" max="50" min="0" type="text" v-model="text">
+        </div>
 
-    </script>
+        <div class="box">
+            <label class="box-label" for="color">Shadow Color</label>
+            <input id="color" type="color" v-model="color">
+        </div>
 
+        <div class="box">
+            <label class="box-label">Preview</label>
+            <div :style="style" class="preview">
+                {{text}}
+            </div>
+        </div>
+
+        <div class="box">
+            <label class="box-label" for="color">CSS</label>
+            <div class="code">{{style}}</div>
+        </div>
+    </div>
+</body>
+
+<script>
+  const generatorApp = {
+    data() {
+      return {
+        offsetX: 3,
+        offsetY: 3,
+        blurRadius: 3,
+        color: 'black',
+        text: 'Lorem ipsum ...'
+      }
+    },
+    computed: {
+      style: function () {
+        return 'text-shadow: '
+          + this.offsetX + 'px '
+          + this.offsetY + 'px '
+          + this.blurRadius
+          + 'px '
+          + this.color
+          + ';';
+      }
+    }
+  }
+  Vue.createApp(generatorApp).mount('#generatorApp');
+
+</script>
 </html>
